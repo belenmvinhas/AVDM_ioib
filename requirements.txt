@@ -1,0 +1,7 @@
+unidecode
+numpy
+pandas
+matplotlib.pyplot
+seaborn
+geopandas
+geodatasets
