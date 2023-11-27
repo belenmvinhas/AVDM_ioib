@@ -1,0 +1,136 @@
+\documentclass[
+  journal=small,
+  manuscript=mini-article,  % Use a - if you need a space e.g. "research-article"
+  year=2023,
+  volume=1,
+]{odj-journal}
+
+\usepackage{amsmath}
+\usepackage[nopatch]{microtype}
+\usepackage{booktabs}
+\usepackage{lipsum} 
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{
+     colorlinks =true,
+     linkcolor  =cyan,
+     filecolor  =cyan,
+     citecolor  =black,      
+     urlcolor   =cyan,
+}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\title{Title}
+
+\author{Ot Garcés Ortiz}
+\affiliation{Departament de Física de la Matèria Condensada,  Barcelona, Spain.}
+\email[Ot Garcés]{ogarceor43@alumnes.ub.edu}
+
+%\author{Your 1st team members' name}
+%\affiliation{Universitat de Barcelona Institute of Complex Systems, Barcelona, Spain.}
+% \alsoaffiliation{Joint first authors}
+
+%\author{Your 2nd team members' name}
+%\affiliation{Universitat de Barcelona Institute of Complex Systems, Barcelona, Spain.}
+
+\keywords{rescue; natural enviroment; civil protection plans; incidents; Catalonia} 
+
+
+\begin{document}
+
+\begin{abstract}
+\textbf{Insert abstract text here. Will be worked on in class on 16th Nov.} Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leoo. Cras viverra metus rhoncus
+sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet
+tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+Praesent eget sem vel leo ultrices bibendum. Aenean faucibus.
+\end{abstract}
+% ----------------------------------------------------- BACKGROUND -----------------------------
+\vspace{-0.7cm}
+\section{Background}
+The objective of the research project is to find geographical and temporal correlations between the Fire Department (FD) natural enviroment rescue operations and modifications in legal status of civil protections plans (CPP); aswell as identify patterns and biases between incidents reported by the Generalitat de Catalunya and the rescue operations carried out by the FD, and changes in legal status of CPP. The study is restricted to the time window between years 2018 and 2022, for which the temporal evolution of the incidents by season will also be conducted. The tasks within the project were split and separated into parallel research questions which were adressed by each of the team members. In my case, the research I conducted addressed \textit{finding geographical correlations/uncorrelations in FD rescue actions and modifications of legal status of CPP}. This mini-article adresses my contribution to the whole project and includes detailed sections on methodologies (see Sec. Methods), main results (see Sec. Results) and some conclusive ideas on my research (see Sec. Conclusions). \\
+
+The data used within the scope of this project is re-used, and it has been taken from the portal \textit{Dades Obertes de Catalunya}\footnote{For conditions of use and licenses refer to \href{https://governobert.gencat.cat/ca/dades_obertes/llicencia-oberta-informacio-catalunya/}{\textit{Llicència oberta d'ús d'informació Catalunya}}.}\cite{dades_obertes}. The two main datasets I worked with are "\textit{Actuacions en salvaments al medi natural dels Bombers de la Generalitat}" (identifier \texttt{fsum-2k6e})\cite{fd_rescue} and "\textit{Registre general de plans de protecció civil de Catalunya}" (identifier \texttt{xqqe-tgav}) \cite{CPP}. The first contains detailed information about rescue actions carried out by the FD of the Generalitat de Catalunya in natural enviroment rescues (such as rivers, lakes, mountains, etc.) by emergency region, county and municipality. This data is available from the year 2010 and up to date. It also provides data corresponding to dates and georeferences (longitude and latitude). This dataset is published with open access (OA) in the portal \textit{Dades Obertes de Catalunya} and it is provided by \textit{Departament d'Interior} and \textit{Direcció General de Prevenció, Extinció d'Incendis i Salvaments}. There is no available information on how data was collected, but this question may be addressed by refering to \textit{Dades Obertes de Catalunya} for any of the details. The latter contains information about the registration of CPP approved by the Generalitat de Catalunya by plan type, state (homologated, revised or updated), last modification date, municipality, county, amongst others. The first registry is dated 22/11/1990. It is worth mentioning that there are CPP that are \textit{supra-municipal} and that those will not be taken into account, since they do not have a county assigned and the study will be carried out by counties. It also includes plans that are not related to natural enviroment disasters, such as RADCAT (radiology emergencies), CAMCAT (poluted water emergencies) or PLASEQCAT i PLASEQTA (exterior emergencies in the chemical industry) in the sense that they are closely related to human action; and therefore they will be filtered out. This dataset is also published in the portal \textit{Dades Obertes de Catalunya} and provided by \textit{Departament d'Interior}. No information on how data was collected is available but this can be adressed by refering to the portal for any details.\\
+
+Lastly, a dataset relative to geometry of Catalonia counties was used within the scope of plotting data in a map. This data corresponds to an 'outdated' map of Catalonia since the map has changed in 2023 (new county Lluçanès) which corresponds to the geometry of administrative divisons of Catalonia with date 01/08/2022. This data is provided and owned by the \textit{Institut Cartogràfic i Geològic de Catalunya (ICGC)}\cite{geo_dades}. 
+
+\section{Methods}
+\textbf{What did you do (to transform the data set into your result(s))? Also: give a link to your python code (a public github repository, or one that Josep and I are collaborators on, Chaotique and josperello.) and briefly explain how the code can be used to generate the presented results. The code should be well documented. If it helps your explanation, you can also incorporate code like this:}
+\begin{lstlisting}
+import numpy as np 
+import pandas as np
+
+df = pd.red_excel("filename.xlsx") # downloaded from example.ub.edu
+print(min(df.salaries))
+\end{lstlisting}
+\lipsum[1]
+
+
+
+\section{Results}
+\textbf{What did you observe in the data? This could be a figure, plus an interpretation of what is seen in the figure.} See example table in Table~\ref{table_example}, or in Fig.\ref{fig_sim}\lipsum[1]
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{An Example of a Table}
+\label{table_example}
+\begin{tabular}{llll}
+\toprule
+\headrow Column head 1 & Column head 2  & Column head 3 & Column head 4\\
+\midrule
+One\tnote{a} & Two&three three &four\\ 
+\midrule
+Three & Four&three three\tnote{b} &four\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[hang]
+\item[]Table note
+\item[a]First note
+\item[b]Another table note
+\end{tablenotes}
+\end{threeparttable}
+\end{table} 
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.75\linewidth]{example-image.pdf}
+\caption{Insert figure caption here}
+\label{fig_sim}
+\end{figure}
+
+
+\section{Conclusions / Discussion}
+\textbf{Which conclusions can be drawn, probably even for policy makers? Is there any future research necessary? Would it be helpful to have more data, and if so, of which type?}\lipsum[1] 
+
+
+
+
+
+%\endnote in some journals will behave like \footnote; and \printendnotes will not output anything. 
+%\printendnotes
+
+\bibliographystyle{acm}
+\bibliography{bibliography}
+
+\end{document}
