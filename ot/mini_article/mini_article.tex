@@ -8,6 +8,8 @@
 \usepackage{amsmath}
 \usepackage[nopatch]{microtype}
 \usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{longtable}
 \usepackage{lipsum} 
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage[colorlinks]{hyperref}
@@ -68,7 +70,7 @@ tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra a
 Praesent eget sem vel leo ultrices bibendum. Aenean faucibus.
 \end{abstract}
 % ----------------------------------------------------- BACKGROUND -----------------------------
-\vspace{-0.7cm}
+\vspace{-1cm}
 \section{Background}
 The objective of the research project is to find geographical and temporal correlations between the Fire Department (FD) natural enviroment rescue operations and modifications in legal status of civil protections plans (CPP); aswell as identify patterns and biases between incidents reported by the Generalitat de Catalunya and the rescue operations carried out by the FD, and changes in legal status of CPP. The study is restricted to the time window between years 2018 and 2022, for which the temporal evolution of the incidents by season will also be conducted. The tasks within the project were split and separated into parallel research questions which were adressed by each of the team members. In my case, the research I conducted addressed \textit{finding geographical correlations/uncorrelations in FD rescue actions and modifications of legal status of CPP}. This mini-article adresses my contribution to the whole project and includes detailed sections on methodologies (see Sec. Methods), main results (see Sec. Results) and some conclusive ideas on my research (see Sec. Conclusions). \\
 
@@ -86,34 +88,39 @@ Finally, Osona and Baix Llobregat where selected for particular study. They were
 As mentioned before, the corresponding code used for treatment of data is shared with open access in the GitHub repository of the group \cite{github_repo}. The results presented in the next section are all included in the corresponding Jupyter Notebook, so that anyone can follow and reproduce the results.
 
 \section{Results}
-\textbf{What did you observe in the data? This could be a figure, plus an interpretation of what is seen in the figure.} See example table in Table~\ref{table_example}, or in Fig.\ref{fig_sim}\lipsum[1]
+The most straightforward way to find any geographical patterns or correlations in our data seemed finding the total number of rescue actions and modifications in the CPP by county, and studying the geographical heatmap of those total rescue actions and modifications in CPP. We proceeded as detailed in the previous section and firstly found the five counties with most rescue actions and modifications in legal status of CPP and found the following:
 
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{An Example of a Table}
-\label{table_example}
-\begin{tabular}{llll}
-\toprule
-\headrow Column head 1 & Column head 2  & Column head 3 & Column head 4\\
-\midrule
-One\tnote{a} & Two&three three &four\\ 
-\midrule
-Three & Four&three three\tnote{b} &four\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[hang]
-\item[]Table note
-\item[a]First note
-\item[b]Another table note
-\end{tablenotes}
-\end{threeparttable}
-\end{table} 
+
+\begin{longtable}{p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+  \caption{Counties with most rescue actions and modifications on legal status of CPP counts between 2018 and 2022.}\label{tab:tab1}\\
+  \toprule
+  \textbf{Dataset} & \textbf{County} & \textbf{$\#$ Counts} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  Rescue actions & Baix Llobregat & 527 \\
+   & Vallès Occidental & 517 \\
+   & Val d'Aran & 500 \\
+   & Ripollès & 479 \\
+   & Berguedà & 417 \\
+  \midrule
+  CPP & Osona & 138 \\
+   & Noguera & 85 \\
+   & Alt Penedès & 84 \\
+   & Bages & 82 \\
+   & Baix Empordà & 82 \\
+  \bottomrule
+\end{longtable}
+From table Tab. \ref{tab:tab1} we firstly note that there is no such big difference between the counts of rescue actions but there is a notorious difference between the counts of modifications on legal status of CPP (Osona has at least  around 50 more counts than the other counties). If we geographically plot both the count of rescue actions and changes in CPP, we find the following.
+
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=0.75\linewidth]{example-image.pdf}
-\caption{Insert figure caption here}
-\label{fig_sim}
+\includegraphics[width=1\linewidth]{../figures/merged_maps_plot}
+\caption{Total counts per county heatmaps. In the left, we display the geographical plot generated for the total number of rescue actions. In the right, we display plot for the total count of changes in CPP. In both, we have highlighted the counties with most counts presented in the previous table Tab. \ref{tab:tab1}}
+\label{fig:fig1}
 \end{figure}
+From figure Fig. \ref{fig:fig1} we can observe that the counties with most rescue actions are, a priori, not geographically correlated with the counties which had most changes in CPP legal status. This can also be seen from the table Tab. \ref{tab:tab1}. We also note that there is a tendency of accumulating rescue actions towards the northern region of Catalonia, which could be caused by mountain rescue actions in the Pyrenees and pre-Pyrenees (this could be an extension to our project but we will not be entering into details) that have nothing to do with CPP but more of individual rescue actions.
 
 
 \section{Conclusions / Discussion}
