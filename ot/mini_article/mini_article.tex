@@ -8,7 +8,10 @@
 \usepackage{amsmath}
 \usepackage[nopatch]{microtype}
 \usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{longtable}
 \usepackage{lipsum} 
+\usepackage{subcaption}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{
@@ -46,89 +49,103 @@
 \title{Title}
 
 \author{Ot Garcés Ortiz}
-\affiliation{Departament de Física de la Matèria Condensada,  Barcelona, Spain.}
+\affiliation{MSc Physics of Complex Systems and Biophysics}
 \email[Ot Garcés]{ogarceor43@alumnes.ub.edu}
 
-%\author{Your 1st team members' name}
-%\affiliation{Universitat de Barcelona Institute of Complex Systems, Barcelona, Spain.}
+\author{Belén Montenegro}
+\affiliation{MSc Physics of Complex Systems and Biophysics}
 % \alsoaffiliation{Joint first authors}
 
-%\author{Your 2nd team members' name}
-%\affiliation{Universitat de Barcelona Institute of Complex Systems, Barcelona, Spain.}
+\author{Iván Casanovas}
+\affiliation{MSc Physics of Complex Systems and Biophysics}
 
+\author{Imma Passaret}
+\affiliation{MSc Physics of Complex Systems and Biophysics}
 \keywords{rescue; natural enviroment; civil protection plans; incidents; Catalonia} 
 
 
 \begin{document}
 
 \begin{abstract}
-\textbf{Insert abstract text here. Will be worked on in class on 16th Nov.} Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leoo. Cras viverra metus rhoncus
-sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet
-tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
-Praesent eget sem vel leo ultrices bibendum. Aenean faucibus.
+In the past five to six decades, the frequency of natural disasters has significantly increased, as highlighted by the 2020 Ecological Threat Register (ETR). Public civil protection (CP) organizations must adapt to circumstances caused by climate change and the consequent potential civil threats, and thus, it is of primordial importance analyzing and evaluating the response of those organisms that must guarantee civil protection. The main objective of the project is to give a broad vision on how rescue actions in natural enviroment are correlated to government action on civil protection. In this paper, we show that there are distinct geographical patterns in rescue actions across Catalonia, and that short-time correlations between government CP action and rescue operations are the key to evaluate the response against global threats. We also emphasize the necessity of improving the resolution of date and time data for a more comprehensive and thorough evaluation of these responses.
 \end{abstract}
 % ----------------------------------------------------- BACKGROUND -----------------------------
-\vspace{-0.7cm}
+\vspace{-1cm}
 \section{Background}
-The objective of the research project is to find geographical and temporal correlations between the Fire Department (FD) natural enviroment rescue operations and modifications in legal status of civil protections plans (CPP); aswell as identify patterns and biases between incidents reported by the Generalitat de Catalunya and the rescue operations carried out by the FD, and changes in legal status of CPP. The study is restricted to the time window between years 2018 and 2022, for which the temporal evolution of the incidents by season will also be conducted. The tasks within the project were split and separated into parallel research questions which were adressed by each of the team members. In my case, the research I conducted addressed \textit{finding geographical correlations/uncorrelations in FD rescue actions and modifications of legal status of CPP}. This mini-article adresses my contribution to the whole project and includes detailed sections on methodologies (see Sec. Methods), main results (see Sec. Results) and some conclusive ideas on my research (see Sec. Conclusions). \\
+The research project aims to identify geographical and temporal correlations between natural environment rescue operations by the Fire Department (FD) and modifications in the legal status of civil protection plans (CPP). The study, conducted between 2018 and 2022, also explores patterns and biases between incidents reported by the Generalitat de Catalunya and FD rescue operations and changes in legal status of CPP. The project's tasks were divided among team members, with my focus on finding geographical correlations/uncorrelations in FD rescue actions and CPP legal status modifications. This mini-article adresses my contribution to the whole project and includes detailed sections on methodologies (see Sec. \ref{sec:methods}), main results (see Sec. \ref{sec:res}) and some conclusive ideas on my research (see Sec. \ref{sec:conclusions}). \\
 
-The data used within the scope of this project is re-used, and it has been taken from the portal \textit{Dades Obertes de Catalunya}\footnote{For conditions of use and licenses refer to \href{https://governobert.gencat.cat/ca/dades_obertes/llicencia-oberta-informacio-catalunya/}{\textit{Llicència oberta d'ús d'informació Catalunya}}.}\cite{dades_obertes}. The two main datasets I worked with are "\textit{Actuacions en salvaments al medi natural dels Bombers de la Generalitat}" (identifier \texttt{fsum-2k6e})\cite{fd_rescue} and "\textit{Registre general de plans de protecció civil de Catalunya}" (identifier \texttt{xqqe-tgav}) \cite{CPP}. The first contains detailed information about rescue actions carried out by the FD of the Generalitat de Catalunya in natural enviroment rescues (such as rivers, lakes, mountains, etc.) by emergency region, county and municipality. This data is available from the year 2010 and up to date. It also provides data corresponding to dates and georeferences (longitude and latitude). This dataset is published with open access (OA) in the portal \textit{Dades Obertes de Catalunya} and it is provided by \textit{Departament d'Interior} and \textit{Direcció General de Prevenció, Extinció d'Incendis i Salvaments}. There is no available information on how data was collected, but this question may be addressed by refering to \textit{Dades Obertes de Catalunya} for any of the details. The latter contains information about the registration of CPP approved by the Generalitat de Catalunya by plan type, state (homologated, revised or updated), last modification date, municipality, county, amongst others. The first registry is dated 22/11/1990. It is worth mentioning that there are CPP that are \textit{supra-municipal} and that those will not be taken into account, since they do not have a county assigned and the study will be carried out by counties. It also includes plans that are not related to natural enviroment disasters, such as RADCAT (radiology emergencies), CAMCAT (poluted water emergencies) or PLASEQCAT i PLASEQTA (exterior emergencies in the chemical industry) in the sense that they are closely related to human action; and therefore they will be filtered out. This dataset is also published in the portal \textit{Dades Obertes de Catalunya} and provided by \textit{Departament d'Interior}. No information on how data was collected is available but this can be adressed by refering to the portal for any details.\\
+The data for this project is sourced from the \textit{Dades Obertes de Catalunya}\footnote{For usage conditions and licenses, see \href{https://governobert.gencat.cat/ca/dades_obertes/llicencia-oberta-informacio-catalunya/}{\textit{Llicència oberta d'ús d'informació Catalunya}}.} portal \cite{dades_obertes}. The primary datasets include "\textit{Actuacions en salvaments al medi natural dels Bombers de la Generalitat}" (identifier \texttt{fsum-2k6e}) \cite{fd_rescue} and "\textit{Registre general de plans de protecció civil de Catalunya}" (identifier \texttt{xqqe-tgav}) \cite{CPP}. The former details natural environment rescue actions by the Generalitat de Catalunya Fire Department, available from 2010 to date, including georeferenced information. This dataset is openly accessible on the \textit{Dades Obertes de Catalunya} portal, provided by \textit{Departament d'Interior} and \textit{Direcció General de Prevenció, Extinció d'Incendis i Salvaments}. The latter dataset records Civil Protection Plans (CPP) approved by the Generalitat de Catalunya, starting from November 22, 1990. Supra-municipal CPPs and those unrelated to natural disasters (e.g., RADCAT, CAMCAT, PLASEQCAT, and PLASEQTA) will be excluded. This dataset is also available on \textit{Dades Obertes de Catalunya} and provided by \textit{Departament d'Interior}. While data collection details are not provided, further information can be found on the portal.\\
 
-Lastly, a dataset relative to geometry of Catalonia counties was used within the scope of plotting data in a map. This data corresponds to an 'outdated' map of Catalonia since the map has changed in 2023 (new county Lluçanès) which corresponds to the geometry of administrative divisons of Catalonia with date 01/08/2022. This data is provided and owned by the \textit{Institut Cartogràfic i Geològic de Catalunya (ICGC)}\cite{geo_dades}. 
+Additionally, a dataset from the \textit{Institut Cartogràfic i Geològic de Catalunya (ICGC)} \cite{geo_dades} was used in order to map Catalonia counties. This dataset contains the administrative divisions' geometry as of August 1, 2022, prior to the 2023 map change due to the creation of the new county Lluçanès.
 
-\section{Methods}
-\textbf{What did you do (to transform the data set into your result(s))? Also: give a link to your python code (a public github repository, or one that Josep and I are collaborators on, Chaotique and josperello.) and briefly explain how the code can be used to generate the presented results. The code should be well documented. If it helps your explanation, you can also incorporate code like this:}
-\begin{lstlisting}
-import numpy as np 
-import pandas as np
+\section{Methods}\label{sec:methods}
+Data was directly downloaded from the portal \textit{Dades Obertes de Catalunya} in \texttt{.csv} format, and then loaded into the Jupyter Notebook published in the GitHub repository of our group \cite{github_repo}. The re-used data was clean, and little to no modifications were needed to carry on with the project. Since, as a group, we restricted the analysis to the time window between years 2018 and 2022, the first thing I did when dealing with those two datasets was to filter data in this time window (the dataset regarding CPP needed a standarization of dates to time-stamp format). In the particular case of the dataset "\textit{Registre general de plans de protecció civil de Catalunya}", I also had to filter the dataset as I mentioned in the previous section, since we were not interested in CPP which were not related to natural enviroment or were somehow directly related to human action (RADCAT, CAMCAT, and others). I also did some filtering on the CPP names, in order to include just the necessary information about the plan type (this column had also information relative to the corresponding municipality). For both datasets, in order to make the analysis clearer, the columns that were not used were dropped, and I allocated new dataframes in memory to carry the analysis.\\
 
-df = pd.red_excel("filename.xlsx") # downloaded from example.ub.edu
-print(min(df.salaries))
-\end{lstlisting}
-\lipsum[1]
+In order to study the geographical correlations between the rescue actions carried out by the FD and the changes in legal status of CPP, after filtering in the corresponding time window, I grouped both datasets by county and computed the total number of rescue actions and modifications of legal status of CPP by county. Once computed the counts, I noticed that the dataset "\textit{Actuacions en salvaments al media natural dels Bombers de la Generalitat}" had taken into account actions of the FD of the Generalitat de Catalunya outside of Catalonia, and so I dropped this data, since the analysis is restricted to Catalonia. By setting the data display in descending order of counts, I found the five counties with most rescue actions in natural enviroment and changes in legal status of CPP (see table Tab. in section Sec.). Then, I merged the grouped dataframes with yet another dataset containing information about the geometry of the map of Catalonia in order to make two geographical plots using \texttt{geopandas}. The five counties with most rescue actions and changes in legal status of CPP were taken into account when making the geographical plots and where highlighted in the corresponding geographical heatmaps (see figure Fig.).\\
+
+Finally, Osona and Baix Llobregat where selected for particular study. They were of interest since they showed particullary differen behaviour. In order to do so, we further filtered the data to obtain the data corresponding to those counties. Some data exploration was carried in order to see if standarization of nomenclature of rescue operations could be used. For the data corresponding to CPP, a new column containing the year of the corresponding date was added. Then, for each Osona and Baix Llobregat, I grouped the dataframes by year and typology of rescue action and typology of CPP; and made bar plots for both the rescue actions and modifications in legal status of CPP hued by rescue action typology and CPP typology.\\
+
+As mentioned before, the corresponding code used for treatment of data is shared with open access in the GitHub repository of the group \cite{github_repo}. The results presented in the next section are all included in the corresponding Jupyter Notebook, so that anyone can follow and reproduce the results.
+
+\section{Results}\label{sec:res}
+To identify geographical patterns and correlations in our data, we adopted a direct approach $-$calculating the total number of rescue actions and modifications in CPP by county and examining the geographical heatmap of these totals. Following the methodology outlined in the previous section, we identified the top five counties with the highest counts of rescue actions and modifications in the legal status of CPP. The results are as follows:
 
 
+\begin{longtable}{p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+  \caption{Counties with most rescue actions and modifications on legal status of CPP counts between 2018 and 2022.}\label{tab:tab1}\\
+  \toprule
+  \textbf{Dataset} & \textbf{County} & \textbf{$\#$ Counts} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  Rescue actions & Baix Llobregat & 527 \\
+   & Vallès Occidental & 517 \\
+   & Val d'Aran & 500 \\
+   & Ripollès & 479 \\
+   & Berguedà & 417 \\
+  \midrule
+  CPP & Osona & 138 \\
+   & Noguera & 85 \\
+   & Alt Penedès & 84 \\
+   & Bages & 82 \\
+   & Baix Empordà & 82 \\
+  \bottomrule
+\end{longtable}
+Table Tab. \ref{tab:tab1} shows little difference in rescue action counts across regions. However, a notable gap appears in modifications to CPP legal status, with Osona having around 50 more instances than other counties. Geographical plots in figure Fig. \ref{fig:fig1} further illustrate these findings.
 
-\section{Results}
-\textbf{What did you observe in the data? This could be a figure, plus an interpretation of what is seen in the figure.} See example table in Table~\ref{table_example}, or in Fig.\ref{fig_sim}\lipsum[1]
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{An Example of a Table}
-\label{table_example}
-\begin{tabular}{llll}
-\toprule
-\headrow Column head 1 & Column head 2  & Column head 3 & Column head 4\\
-\midrule
-One\tnote{a} & Two&three three &four\\ 
-\midrule
-Three & Four&three three\tnote{b} &four\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[hang]
-\item[]Table note
-\item[a]First note
-\item[b]Another table note
-\end{tablenotes}
-\end{threeparttable}
-\end{table} 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=0.75\linewidth]{example-image.pdf}
-\caption{Insert figure caption here}
-\label{fig_sim}
+\includegraphics[width=1\linewidth]{../figures/merged_maps_plot}
+\caption{Heatmaps showing the total number of rescue actions and modifications in CPP. In the left, we display the geographical plot generated for the total number of rescue actions. In the right, we display plot for the total count of changes in CPP. In both, we have highlighted the counties with most counts presented in the previous table Tab. \ref{tab:tab1}.}
+\label{fig:fig1}
 \end{figure}
+From figure Fig. \ref{fig:fig1} we can observe that the counties with most rescue actions are, a priori, not geographically correlated with the counties which had most changes in CPP legal status. This can also be seen from the table Tab. \ref{tab:tab1}. We also note that there is a tendency of accumulating rescue actions towards the northern region of Catalonia, which could be caused by mountain rescue actions in the Pyrenees and pre-Pyrenees (this could be an extension to our project but we will not be entering into details) that have nothing to do with CPP but more of individual rescue actions. We also note that both Osona and Baix Llobregat have qualitatively different behaviours: Baix Llobregat is the county with most rescue actions but has rather a mild number of changes in CPP legal status, whilst Osona has a huge number of changes in CPP and also a great number of rescue actions. We then studied both counties separately by year, and found the results in figures Fig. \ref{fig:sub1}-\ref{fig:sub2}.
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.47\textwidth}
+\includegraphics[width=\textwidth]{../figures/combined_plot_osona.pdf}
+\caption{}
+\label{fig:sub1}
+\end{subfigure}\hskip1ex
+\begin{subfigure}{0.47\textwidth}
+\includegraphics[width=\textwidth]{../figures/combined_plot_baix_llobregat.pdf}
+\caption{}
+\label{fig:sub2}
+\end{subfigure}
+\caption{Barplot showing the total count of rescue actions and changes in legal status of CPP per year hued by rescue and CPP typology. Subplot (a) correspond to data for Osona whilst subplot (b) corresponds to data for Baix Llobregat. For Baix Llobregat, no data was provided in the year 2018. Codes for rescue actions FL, MU, RC, MR and CO correspond to fluvial, mountain, research, maritime and cave rescues, respectively. Codes for CPP belong to different types of CPP.}
+\end{figure}
+As mentioned and without going into much detail, we can see that there is an evident different qualitative baviour: for Osona rescue actions seem to be somehow uncorrelated since peaks in changes of legal status of CPP do not match with rescue actions, whilst in the case of Baix Llobregat there is a well defined peak both in rescue actions and changes in CPP in the year 2021.
+
+\section{Conclusions / Discussion}\label{sec:conclusions}
+One of the main conclusions from the previous study is that, a priori, the rescue actions and the changes in legal status of CPP are uncorrelated at large time scale analysis. In most cases, rescue actions may be carried out in invidual and particular emergencies and mostly not in global civil threats or major civil protection actions. There can be, though, short time correlations between the previous in some cases, just as we have seen in the case of Baix Llobregat. 
+
+The geographical heatmap on rescue actions by county also shows that there is an evident tendency of concentration of rescue action towards the northern region of Catalonia; which are actually related to the mountain enviroment rescue actions as our coleague Imma Passaret shows in their respective analysis of the data. The heatmap on changes in legal status of CPP suggest that these rescue actions are not related to civil protection.
+
+Short-time correlations between rescue actions and modifcations of legal status of CPP put into test and evaluate the response of the public organisms towards global threats. Thus, in order to be able to make a thorough evaluation of the response of public organisms for civil protection we would need to improve date resolution of data, into probably date and time resolution. Future research could be carried along these matters of more thoroughly testing and evaluating the response of public organisms on civil protection.
 
 
-\section{Conclusions / Discussion}
-\textbf{Which conclusions can be drawn, probably even for policy makers? Is there any future research necessary? Would it be helpful to have more data, and if so, of which type?}\lipsum[1] 
-
-
-
-
-
-%\endnote in some journals will behave like \footnote; and \printendnotes will not output anything. 
-%\printendnotes
 
 \bibliographystyle{acm}
 \bibliography{bibliography}
